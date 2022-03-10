@@ -2,9 +2,10 @@ import { useCallback, useEffect } from 'react';
 import { Button } from '../button';
 import { Timer } from '../timer';
 import { useAppDispatch, useAppSelector } from '../../store/hooks/useDispatch';
-import { init, pause, run, setDocumentTitle, setTimerId, stop, tick, TimeInterval } from '../../store/reducers/timerReducer';
+import { init, pause, run, setDocumentTitle, setTimerId, stop, tick } from '../../store/reducers/timerReducer';
 import classnames from 'classnames/bind';
 import style from './main-screen.module.css';
+import { TimeInterval } from '../../constants/constants';
 
 const cx = classnames.bind(style);
 
@@ -16,11 +17,11 @@ export const MainScreen = () => {
   
     useEffect(() => {
       dispatch(init());
-    }, []);
+    }, [dispatch]);
 
     useEffect(() => {
       setDocumentTitle(time, intervalType);
-    }, [intervalType, time])
+    }, [intervalType, time]);
     
     const handelStartTimer = useCallback(() => {
       dispatch(run());

@@ -1,24 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import dayjs from "dayjs";
+import { DEFAULT_SEQUENCE, TimeInterval, TIME_INTERVALT_TO_TIME } from "../../constants/constants";
 import { formatTime, getDateDiff, getNow, nowPlus } from "../../helpers/dayJS";
-
-export enum TimeInterval {
-    POMODOR = 'pomodor',
-    BREAK = 'break',
-    LONG_BREAK = 'longBreak'
-}
-
-const DEFAULT_POMODORO_DURATION = 25;
-const DEFAULT_BREAK_DURATION = 5;
-const DEFAULT_LONG_BREAK_DURATION = 10;
-const SECONDS_PER_MINUTE = 60;
-const DEFAULT_SEQUENCE = [TimeInterval.POMODOR, TimeInterval.BREAK, TimeInterval.POMODOR, TimeInterval.BREAK, TimeInterval.LONG_BREAK];
-
-const TIME_INTERVALT_TO_TIME = {
-    [TimeInterval.POMODOR]: SECONDS_PER_MINUTE * DEFAULT_POMODORO_DURATION,
-    [TimeInterval.BREAK]: SECONDS_PER_MINUTE * DEFAULT_BREAK_DURATION,
-    [TimeInterval.LONG_BREAK]: SECONDS_PER_MINUTE * DEFAULT_LONG_BREAK_DURATION,
-}
 
 type TimeIntervalMap = typeof TIME_INTERVALT_TO_TIME
 
@@ -97,7 +80,6 @@ const timerSlice = createSlice({
             
             if (tillEndInSeconds === 0) {
                 state.isRun = false;
-                // Беру следующий этап из очереди и выставляю соотвествующие флаги
                 if (state.sequence.length - 1 === state.currentInterval) {
                     state.currentInterval = 0;
                 } else {

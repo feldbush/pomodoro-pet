@@ -1,10 +1,8 @@
-import { configureStore, createStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "@reduxjs/toolkit";
-import counterReducer from './reducers/counterReducer';
 import timerReducer from "./reducers/timerReducer";
 export const rootReducer = combineReducers(
     {
-        counterReducer,
         timerReducer
     }
 );
