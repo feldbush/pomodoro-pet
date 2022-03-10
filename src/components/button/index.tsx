@@ -5,14 +5,14 @@ const cx = classnames.bind(style);
 
 type Props = {
     text: string
-    onClick?: () => {} | void,
+    onClick: () => {} | void,
     disabled?: boolean
 }
 
 export const Button = (props: Props) => {
     const {
         text,
-        onClick = () => {},
+        onClick,
         disabled
     } = props;
 
