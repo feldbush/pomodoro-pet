@@ -1,0 +1,27 @@
+.screen {
+  padding: 10px;
+  height: 100vh;
+  background-color: var(--color-bg);
+}
+
+.break {
+  background-color: var(--color-green);
+}
+
+.timerWrap {
+  margin: 30px 20px; 
+}
+
+.btnsWrap {
+  display: flex;
+  justify-content: center;
+}
+
+.btnsWrap > button {
+  max-width: 300px;
+  margin-right: 10px;
+}
+
+.btnsWrap >*:last-child {
+  margin: 0;
+}
